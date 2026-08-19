@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3729 Gatewood Drive | Coastal Oasis Real Estate</title>
+    <style>
+        /* Cool, Relaxing Color Palette */
+        :root {
+            --primary-dark: #1e293b; /* Deep slate */
+            --primary-blue: #334155; /* Soft slate blue */
+            --accent-teal: #0d9488; /* Calming sea teal */
+            --accent-light: #ccfbf1; /* Very pale teal for highlights */
+            --bg-page: #f8fafc; /* Cool icy white/gray */
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        header {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(30, 41, 59, 0.4), rgba(30, 41, 59, 0.8)), url('IMG_8545.jpeg') center/cover no-repeat;
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .price {
+            font-size: 2.25rem;
+            color: #5eead4; /* Soft bright teal */
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .home-stats {
+            font-size: 1.25rem;
+            color: var(--accent-light);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            font-size: 1.35rem;
+            font-weight: 300;
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Introduction Card */
+        .intro-section {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section h2 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Section Headings */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--primary-dark);
+            font-weight: 300;
+        }
+
+        .section-header .divider {
+            height: 3px;
+            width: 60px;
+            background-color: var(--accent-teal);
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        /* Interactive Upgrades Grid */
+        .upgrades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 5rem;
+        }
+
+        .upgrade-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .upgrade-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(13, 148, 136, 0.08);
+            border-color: var(--accent-light);
+        }
+
+        .upgrade-number {
+            background: var(--accent-light);
+            color: var(--accent-teal);
+            font-weight: 600;
+            font-size: 1rem;
+            height: 35px;
+            width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .upgrade-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        /* Interactive Gallery */
+        .gallery-category {
+            margin-bottom: 3.5rem;
+        }
+
+        .gallery-category h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            border-left: 4px solid var(--accent-teal);
+            padding-left: 1rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .image-card {
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-card:hover img {
+            opacity: 0.9;
+        }
+
+        /* Hover Overlay for Images */
+        .image-card::after {
+            content: '🔍 Click to Enlarge';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(13, 148, 136, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .image-card:hover::after {
+            opacity: 1;
+            top: 50%;
+        }
+
+        .image-card .caption {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: var(--primary-blue);
+            text-align: center;
+            font-weight: 500;
+            background: white;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* Lightbox (Modal) Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .intro-section { padding: 2rem 1.5rem; }
+            .price { font-size: 1.75rem; }
+            .home-stats { font-size: 1.1rem; }
+            .container { margin-top: -2rem; padding: 0 1rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>3729 Gatewood Drive</h1>
+            <div class="price">$485,000</div>
+            <div class="home-stats">1,040 ft&sup2; + Two-Car Garage</div>
+            <p class="tagline">A beautifully renovated sanctuary featuring a custom saltwater pool and serene nature preserve views.</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Inviting Description Section -->
+        <div class="intro-section">
+            <h2>Welcome to Your Private Coastal Oasis</h2>
+            <p>Experience Florida living at its absolute finest. This meticulously updated, move-in-ready home offers the perfect blend of modern luxury and relaxing tranquility. Designed for both peaceful retreats and effortless entertaining, the property boasts a spectacular custom-heated saltwater pool, seamless indoor-outdoor living spaces, and exclusive direct access to a quiet nature preserve. With entirely modernized systems, premium hurricane protection, and elegant cosmetic finishes throughout, every detail has been thoughtfully curated for your comfort.</p>
+        </div>
+
+        <!-- Features & Upgrades Section -->
+        <div class="section-header">
+            <h2>Comprehensive Home Upgrades</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="upgrades-grid">
+            <div class="upgrade-card"><div class="upgrade-number">1</div><div class="upgrade-text">Recent Appraisal (08/2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">2</div><div class="upgrade-text">Custom Kitchen Ceiling (2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">3</div><div class="upgrade-text">Pressure Washed/Resurfaced & Pool Seal (05/2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">4</div><div class="upgrade-text">New Stainless Steel Kitchen Appliances (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">5</div><div class="upgrade-text">New Kitchen Countertops (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">6</div><div class="upgrade-text">New HVAC Unit (2023)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">7</div><div class="upgrade-text">New Hot Water Heater (2024)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">8</div><div class="upgrade-text">All New Plumbing Valves Upgraded Entire House (2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">9</div><div class="upgrade-text">Central Vac System</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">10</div><div class="upgrade-text">New Well Pump, 6 New Valves, Control Unit & Pressure Tank (2024)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">11</div><div class="upgrade-text">New Laminate Floors & Baseboards Throughout Entire Home (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">12</div><div class="upgrade-text">New Multistage Pentair Saltwater Pump (2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">13</div><div class="upgrade-text">New iChlor Plus Salt Cell (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">14</div><div class="upgrade-text">New Wind Mitigation Home Inspection (Good for 10 Years, 2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">15</div><div class="upgrade-text">Custom Saltwater Heated Pool with 3 Fountains, Jacuzzi Jets, Lighting & Fish In-lays</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">16</div><div class="upgrade-text">Both Bathrooms Updated (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">17</div><div class="upgrade-text">New Textured Ceiling & New Paint (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">18</div><div class="upgrade-text">Electrical Outlets/Switches Updated (2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">19</div><div class="upgrade-text">Pool Heater Included</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">20</div><div class="upgrade-text">Alarm System Installed</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">21</div><div class="upgrade-text">Pavers on Pool Deck, Driveway & Walkway</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">22</div><div class="upgrade-text">All Hurricane Windows, Front Door & Garage Door (Class 4 Hurricane Rated)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">23</div><div class="upgrade-text">Fenced-in Backyard for Privacy</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">24</div><div class="upgrade-text">Firepit on Pool Deck</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">25</div><div class="upgrade-text">Direct Access to Nature Preserve Off Main Drag (1 of 4 Houses)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">26</div><div class="upgrade-text">Metal Roof Inspection (2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">27</div><div class="upgrade-text">Durable Metal Roof (2013)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">28</div><div class="upgrade-text">New Whirlpool Washer & Dryer (08/2026)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">29</div><div class="upgrade-text">Main Electrical Panel Rewired & Added Outlet for Generator (2025)</div></div>
+            <div class="upgrade-card"><div class="upgrade-number">30</div><div class="upgrade-text">New Carpets in Bedrooms (2026)</div></div>
+        </div>
+
+        <!-- Photo Gallery Section -->
+        <div class="section-header">
+            <h2>Property Gallery</h2>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Exterior -->
+        <div class="gallery-category">
+            <h3>Exterior & Grounds</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8545.jpeg" alt="Front Elevation & Paver Driveway">
+                    <div class="caption">Front Elevation & Paver Driveway</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8485.jpeg" alt="Paver Walkway & Curb Appeal">
+                    <div class="caption">Paver Walkway & Curb Appeal</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8486.jpeg" alt="Front Yard Oak Tree with Swing">
+                    <div class="caption">Front Yard Oak Tree with Swing</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8463.jpeg" alt="Backyard View & Landscaping">
+                    <div class="caption">Backyard View & Landscaping</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8512.jpeg" alt="Side Yard & Greenery">
+                    <div class="caption">Side Yard & Greenery</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Living & Dining -->
+        <div class="gallery-category">
+            <h3>Living & Dining Areas</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8506.jpeg" alt="Living Room with New Flooring">
+                    <div class="caption">Living Room with New Flooring</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8507.jpeg" alt="Indoor-Outdoor Flow to Pool Lanai">
+                    <div class="caption">Indoor-Outdoor Flow to Pool Lanai</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8518.jpeg" alt="Inviting Dining Nook">
+                    <div class="caption">Inviting Dining Nook</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8466.jpeg" alt="Open Concept Living Space">
+                    <div class="caption">Open Concept Living Space</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kitchen -->
+        <div class="gallery-category">
+            <h3>Modern Kitchen</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8503.jpeg" alt="Updated Kitchen & Appliances">
+                    <div class="caption">Updated Kitchen & Appliances</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8504.jpeg" alt="Custom Ceiling & Undermount Sink">
+                    <div class="caption">Custom Ceiling & Undermount Sink</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8505.jpeg" alt="New Countertops & Breakfast Bar">
+                    <div class="caption">New Countertops & Breakfast Bar</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bedrooms & Bathrooms -->
+        <div class="gallery-category">
+            <h3>Bedrooms & Bathrooms</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8464.jpeg" alt="Primary Bedroom">
+                    <div class="caption">Primary Bedroom</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8462.jpeg" alt="Updated Full Bathroom">
+                    <div class="caption">Updated Full Bathroom</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8461.jpeg" alt="Primary Bathroom Vanity">
+                    <div class="caption">Primary Bathroom Vanity</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8515.jpeg" alt="Secondary Bedroom">
+                    <div class="caption">Secondary Bedroom</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8467.jpeg" alt="Secondary Bathroom">
+                    <div class="caption">Secondary Bathroom</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pool & Lanai -->
+        <div class="gallery-category">
+            <h3>Pool, Lanai & Custom Details</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8508.jpeg" alt="Screened Enclosure & Firepit">
+                    <div class="caption">Screened Enclosure & Firepit</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8513.jpeg" alt="Covered Seating & Outdoor Living">
+                    <div class="caption">Covered Seating & Outdoor Living</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8514.jpeg" alt="Shaded Patio & Ceiling Fans">
+                    <div class="caption">Shaded Patio & Ceiling Fans</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8512.jpeg" alt="Pool Deck & Yard View">
+                    <div class="caption">Pool Deck & Yard View</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8529.jpeg" alt="Saltwater Pool with Active Fountains">
+                    <div class="caption">Saltwater Pool with Active Fountains</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8509.jpeg" alt="Custom Sea Turtle Pool In-lays">
+                    <div class="caption">Custom Sea Turtle Pool In-lays</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8510.jpeg" alt="Custom Flying Fish Pool In-lay">
+                    <div class="caption">Custom Flying Fish Pool In-lay</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8511.jpeg" alt="Custom Stingray Pool In-lay">
+                    <div class="caption">Custom Stingray Pool In-lay</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents & Extras -->
+        <div class="gallery-category">
+            <h3>Documents & Extras</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8442.jpeg" alt="Washer & Dryer">
+                    <div class="caption">Washer & Dryer</div>
+                </div>
+                <div class="image-card" onclick="openLightbox(this)">
+                    <img src="IMG_8522.jpeg" alt="Living Area Display">
+                    <div class="caption">Living Area Display</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- The Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 3729 Gatewood Drive. All rights reserved.</p>
+    </footer>
+
+    <!-- Interactive JavaScript for Lightbox -->
+    <script>
+        function openLightbox(cardElement) {
+            const img = cardElement.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
