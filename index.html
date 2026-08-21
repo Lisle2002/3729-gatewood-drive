@@ -83,10 +83,147 @@
         /* Main Container */
         .container {
             max-width: 1200px;
-            margin: -3rem auto 0;
-            padding: 0 1.5rem 4rem;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
             position: relative;
             z-index: 10;
+        }
+
+        /* Floor Plan Section Styling */
+        .floor-plan-wrapper {
+            margin-bottom: 4rem;
+            margin-top: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0.5rem auto 0;
+        }
+
+        .specs-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            min-width: 180px;
+            flex: 1 1 180px;
+            max-width: 250px;
+        }
+
+        .spec-value {
+            display: block;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .spec-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        .floor-plan-card-container {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .floor-plan-toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .toolbar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            color: var(--primary-blue);
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toolbar-btn:hover {
+            background: #e2e8f0;
+            color: var(--primary-dark);
+        }
+
+        .toolbar-btn.primary {
+            background: var(--accent-teal);
+            color: white;
+            border-color: var(--accent-teal);
+        }
+
+        .toolbar-btn.primary:hover {
+            background: #0f766e;
+        }
+
+        .floor-plan-img-viewport {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 450px;
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .floor-plan-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 700px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Rotation Helper Classes */
+        .floor-plan-img.rotate-90 {
+            transform: rotate(90deg) scale(0.8);
+        }
+        .floor-plan-img.rotate-180 {
+            transform: rotate(180deg);
+        }
+        .floor-plan-img.rotate-270 {
+            transform: rotate(270deg) scale(0.8);
+        }
+
+        .floor-plan-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-style: italic;
         }
 
         /* Introduction Card */
@@ -335,7 +472,9 @@
             .intro-section { padding: 2rem 1.5rem; }
             .price { font-size: 1.75rem; }
             .home-stats { font-size: 1.1rem; }
-            .container { margin-top: -2rem; padding: 0 1rem 3rem; }
+            .container { padding: 2rem 1rem 3rem; }
+            .floor-plan-toolbar { justify-content: center; }
+            .spec-item { flex: 1 1 100%; }
         }
     </style>
 </head>
@@ -351,6 +490,54 @@
     </header>
 
     <div class="container">
+
+        <!-- Professional Floor Plan Section -->
+        <div class="floor-plan-wrapper">
+            <div class="section-header">
+                <h2>Interactive Architectural Floor Plan</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Official layout dimensions featuring extended custom pool enclosure, shaded lanai, and two-car garage.</p>
+            </div>
+
+            <!-- Architectural Specs Bar -->
+            <div class="specs-bar">
+                <div class="spec-item">
+                    <span class="spec-value">1,040 sq ft</span>
+                    <span class="spec-label">Net Livable Area</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">483 sq ft</span>
+                    <span class="spec-label">2-Car Garage (21' × 23')</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">1,018 sq ft</span>
+                    <span class="spec-label">Pool & Deck Area (36' × 28')</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">231 sq ft</span>
+                    <span class="spec-label">Rear Covered Porch</span>
+                </div>
+            </div>
+
+            <!-- Floor Plan Card & Controls -->
+            <div class="floor-plan-card-container">
+                <div class="floor-plan-toolbar">
+                    <button class="toolbar-btn" onclick="rotateFloorPlan()" id="rotateBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        Rotate View (90°)
+                    </button>
+                    <button class="toolbar-btn primary" onclick="openLightboxFromSrc('IMG_8585.jpeg', 'Architectural Floor Plan - 3729 Gatewood Drive')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                        Full Screen
+                    </button>
+                </div>
+
+                <div class="floor-plan-img-viewport">
+                    <img src="IMG_8585.jpeg" id="floorPlanImg" class="floor-plan-img" alt="3729 Gatewood Drive Floor Plan" onclick="openLightboxFromSrc(this.src, this.alt)">
+                </div>
+                <div class="floor-plan-caption">Official Appraisal Sketch & Area Breakdown Summary</div>
+            </div>
+        </div>
 
         <!-- Inviting Description Section -->
         <div class="intro-section">
@@ -569,16 +756,32 @@
         <p>&copy; 2026 3729 Gatewood Drive. All rights reserved.</p>
     </footer>
 
-    <!-- Interactive JavaScript for Lightbox -->
+    <!-- Interactive JavaScript -->
     <script>
+        let currentRotation = 0;
+
+        function rotateFloorPlan() {
+            const img = document.getElementById('floorPlanImg');
+            currentRotation = (currentRotation + 90) % 360;
+            
+            img.className = 'floor-plan-img';
+            if (currentRotation > 0) {
+                img.classList.add(`rotate-${currentRotation}`);
+            }
+        }
+
         function openLightbox(cardElement) {
             const img = cardElement.querySelector('img');
+            openLightboxFromSrc(img.src, img.alt);
+        }
+
+        function openLightboxFromSrc(src, captionText) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
 
-            lightboxImg.src = img.src;
-            lightboxCaption.textContent = img.alt;
+            lightboxImg.src = src;
+            lightboxCaption.textContent = captionText;
 
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
